@@ -27,4 +27,8 @@ public class Account {
     private Set<Payment> withdrawals;
     @OneToMany(mappedBy = "receiver")
     private Set<Payment> deposits;
+
+    public void changeBalance(BigDecimal delta) {
+        this.setBalance(this.getBalance().add(delta));
+    }
 }
