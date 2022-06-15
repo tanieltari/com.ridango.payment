@@ -12,11 +12,11 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 public class Payment {
     @Id
@@ -24,10 +24,10 @@ public class Payment {
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_account_id")
-    private Account sender;
+    private final Account sender;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_account_id")
-    private Account receiver;
+    private final Account receiver;
     @CreationTimestamp
     private Timestamp timestamp;
 }

@@ -54,10 +54,7 @@ public class PaymentService {
         sender.changeBalance(payment.getAmount().negate());
         receiver.changeBalance(payment.getAmount());
         accountRepository.saveAll(Arrays.asList(sender, receiver));
-        Payment newPayment = new Payment();
-        newPayment.setReceiver(receiver);
-        newPayment.setSender(sender);
-        paymentRepository.save(newPayment);
+        paymentRepository.save(new Payment(sender, receiver));
         return;
     }
 }
