@@ -8,26 +8,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
+@Builder
 public class Payment {
     @Id
     @GeneratedValue
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_account_id")
-    private final Account sender;
+    private Account sender;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_account_id")
-    private final Account receiver;
+    private Account receiver;
     @CreationTimestamp
     private Timestamp timestamp;
 }
