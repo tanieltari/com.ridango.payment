@@ -15,14 +15,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentDto {
-    @NotNull
-    @Min(1)
+    @NotNull(message = "Sender account ID must be valid number")
+    @Min(value = 1, message = "Sender account ID must be positive number")
     private Long senderAccountId;
-    @NotNull
-    @Min(1)
+    @NotNull(message = "Receiver account ID must be valid number")
+    @Min(value = 1, message = "Receiver account ID must be positive number")
     private Long receiverAccountId;
-    @NotNull
-    @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(fraction = 2, integer = 10)
+    @NotNull(message = "Amount must be valid number")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Amount must be positive number")
+    @Digits(fraction = 2, integer = 10, message = "Amount must have 2 fraction part digits, eg 0.00")
     private BigDecimal amount;
 }
