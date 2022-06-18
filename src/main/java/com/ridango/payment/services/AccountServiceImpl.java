@@ -20,6 +20,10 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public void transferMoney(Account sender, Account receiver, BigDecimal amount) throws IllegalArgumentException {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Amount value must be greater than 0");
+        }
+
         if (!hasAccountEnoughBalance(sender, amount)) {
             throw new IllegalArgumentException("Sender has not enough balance for payment");
         }
