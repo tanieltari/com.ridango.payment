@@ -1,0 +1,1 @@
+INSERT INTO account (id, name, balance) VALUES (1, 'Jack Sparrow', 2003.63), (2, 'Indiana Jones', 19.81), (3, 'Ace Ventura', 0.00);
